@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <title>Document</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            outline:0px;
+            border:0;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+
+        #mainBox{
+            margin-left: 190px;
+            margin-top: 70px;
+            width:19rem;
+            height:30.5rem;
+            border: 2px solid black;
+            border-radius: 8px;
+            position:relative;
+        }
+
+
+        #heading{
+            width:auto;
+            height: 3rem;
+            background-color: rgb(162,194,235); 
+            border-radius: 0.5rem;
+            margin: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            user-select:none;
+        }
+
+        #calcScreen{
+            width: calc( 100% - 1.5rem );
+            border: 1px solid black;
+            display: block;
+            margin: 0.5rem auto 1rem auto;
+            font-size: 1.4rem;
+            color: grey;
+            user-select:none;
+
+
+        }
+    
+        .normalbutton{
+            width: 3rem;
+            height: 3rem;
+            background-color: white; 
+            /* background-color: rgb(162,194,235);  */
+            /* border: 1px solid black; */
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0px 3px 8px 1px #A2C2EB;
+            user-select:none;
+
+        }
+
+        .normalbutton:active{
+            background-color: rgb(162,194,235);
+            box-shadow: none;
+        }
+
+
+
+        .zerobutton{
+            background-color: white; 
+            /* background-color: rgb(162,194,235);  */
+            width: 7.8rem;
+            height: 3rem;
+            /* border: 1px solid black; */
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0px 3px 8px 1px #A2C2EB;
+            user-select:none;
+
+        }
+
+        .zerobutton:active{
+            background-color: rgb(162,194,235);
+            box-shadow: none;
+        }
+
+        .equalbutton{
+            background-color: white; 
+            /* background-color: rgb(162,194,235);  */
+            height: 7rem;
+            width: 3rem;
+            /* border: 1px solid black; */
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0px 3px 8px 1px #A2C2EB;
+            user-select:none;
+
+
+        }
+
+        .equalbutton:active{
+            background-color: rgb(162,194,235);
+            box-shadow: none;
+        }
+        
+
+
+        .line{
+            display:flex;
+            /* justify-content:space-around; */
+            align-items:center;
+            gap:1.8rem;
+            margin: 0 0.75rem;
+            height:4rem;
+            /* border: 1px solid black; */
+        }
+        .line2{
+            display:flex;
+            /* justify-content:space-around;*/
+            align-items:center; 
+            gap:1.8rem;
+            height:4rem;
+            /* border: 1px solid black; */
+        }
+
+        .bottomPart{
+            /* border: 1px solid red; */
+            margin: 0 0.75rem;
+            display: flex;
+
+        }
+
+        .left{
+            width: 75%;
+            
+        }
+
+        .right{
+            width: 25%;
+            /* border: 1px solid blue; */
+            display:flex;
+            align-items: center;
+            justify-content:end;
+            
+        }
+
+        #inputNumber1{
+            border: 1px solid red;
+            color: grey;
+            text-align:end;
+            margin-left: 0.75rem;
+            font-size: 1rem;
+            width:8rem;
+            user-select:none;
+        }
+
+        #gizli{
+            user-select:none;
+            position:absolute;
+            width:17.25rem;
+            height:1.95rem;
+            left:0.75rem;
+            top:6.35rem;
+            font-size: 1.4rem;
+
+            color: grey;
+            text-align:end;
+            transition: all 0.6s;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    
+
+<div id="mainBox">
+
+    <div id="heading">
+        <p>Calculator</p> 
+    </div>
+
+    <input type="text" name="inputNumber1" id="inputNumber1">
+    <input type="text" name="mainScreeen" id="calcScreen" class = "calcScreen" dir="rtl" placeholder = "0">
+
+    <div id="keyboardSection">
+        <div class="line">
+            <button id="temizle"  onclick = "temizle()" class="normalbutton">C</button>
+            <button id="delete"  onclick = "deleteLastNumber()" class="normalbutton">&larr;</button>
+            <button id="divide"  onclick = "divide()" class="normalbutton">/</button>
+            <button id="multiple"   onclick = "multiple()" class="normalbutton">*</button>
+        </div>
+
+
+        <div class="line">
+            <button id="seven" onclick="addValue(7)" class="normalbutton">7</button>
+            <button id="eight" onclick="addValue(8)"  class="normalbutton">8</button>
+            <button id="nine"  onclick="addValue(9)" class="normalbutton">9</button>
+            <button id="minus"  onclick = "minus()" class="normalbutton">-</button>
+        </div>
+
+        <div class="line">
+            <button id="four"  onclick="addValue(4)" class="normalbutton">4</button>
+            <button id="five"  onclick="addValue(5)" class="normalbutton">5</button>
+            <button id="six"  onclick="addValue(6)" class="normalbutton">6</button>
+            <button id="addition"  onclick = "addition()" class="normalbutton">+</button>
+        </div>
+
+        <div class="bottomPart">
+            <div class="left">
+                <div class="line2">
+                    <button id="one"  onclick="addValue(1)" class="normalbutton">1</button>
+                    <button id="two"  onclick="addValue(2)" class="normalbutton">2</button>
+                    <button id="three"  onclick="addValue(3)" class="normalbutton">3</button>
+                </div>
+        
+                <div class="line2">
+                    <button id="zero"  onclick="addValue(0)" class="zerobutton">0</button>
+                    <button id="dot" onclick="addValue('.')"  class="normalbutton">.</button>
+                </div>
+            </div>
+
+            <div class="right">
+                <button id="equal"  onclick = "calculate()" class="equalbutton ">=</button>
+            </div>
+
+
+        </div>
+
+    </div>
+    <p id="gizli"></p>
+
+
+</div>
+<span>Sayi1 :</span><span id="ssayi1"></span>
+<br>
+<span>Sayi2 :</span><span id="ssayi2"></span>
+
+
+
+<script>
+    let dizi = [];
+    let secondDizi = [];
+    let islem = "";
+    let sonuc = 0;
+
+    let deger1 = document.getElementById("inputNumber1");
+    let deger2 = document.getElementById("calcScreen");
+
+    let ssayi1 = document.getElementById("ssayi1");
+    let ssayi2 = document.getElementById("ssayi2");
+
+    function updateIndicator(){
+            ssayi1.innerText = secondDizi.join('');
+            ssayi2.innerText = dizi.join('');
+    }
+
+    function deleteLastNumber(){
+        if(dizi.length > 0){
+            dizi.pop();
+            deger2.value = dizi.join('');
+            updateIndicator();
+        }else if(dizi.length == 0){
+            dizi = [...secondDizi];
+            secondDizi = [];
+            deger1.value="";
+            deger2.value = dizi.join('');
+            updateIndicator();
+
+        }
+    }
+    
+    function addValue(number){
+        dizi.push(number);
+        deger2.value = dizi.join('');
+            updateIndicator();
+            
+    }
+
+
+    function minus(){
+        if(secondDizi.length == 0){
+            console.log('yalnızca 1. sayı var');
+            secondDizi = [...dizi];
+            dizi = [];
+
+            islem="cikarma";
+            updateIndicator();
+            animasyonlaTasi();
+        }else{
+            console.log('her iki sayıda mevcut');
+            calculate();
+            islem = "cikarma";
+            updateIndicator();
+            animasyonlaTasi();
+        }
+
+    }
+    
+    function addition(){
+        if(secondDizi.length == 0){
+            console.log('yalnızca 1. sayı var');
+            secondDizi = [...dizi];
+            dizi = [];
+
+            islem="toplama";
+            updateIndicator();
+            animasyonlaTasi();
+        }else{
+            console.log('her iki sayıda mevcut');
+            calculate();
+            islem = "toplama";
+            updateIndicator();
+            animasyonlaTasi();
+        }
+
+    }
+
+
+    function divide(){
+        if(secondDizi.length == 0){
+            console.log('yalnızca 1. sayı var');
+            secondDizi = [...dizi];
+            dizi = [];
+
+            islem="bol";
+            updateIndicator();
+            animasyonlaTasi();
+        }else{
+            console.log('her iki sayıda mevcut');
+            calculate();
+            islem = "bol";
+            updateIndicator();
+            animasyonlaTasi();
+        }
+    }
+
+
+    function multiple(){
+        if(secondDizi.length == 0){
+            console.log('yalnızca 1. sayı var');
+            secondDizi = [...dizi];
+            dizi = [];
+
+            islem="carpma";
+            updateIndicator();
+            animasyonlaTasi();
+        }else{
+            console.log('her iki sayıda mevcut');
+            calculate();
+            islem = "carpma";
+            updateIndicator();
+            animasyonlaTasi();
+        }
+
+    }
+
+    function calculate(){
+        if(dizi.length > 0 && secondDizi.length > 0){
+            n1 = Number(secondDizi.join(''));
+            n2 = Number(dizi.join(''));
+            if(islem=="carpma"){
+                sonuc = n1 * n2;
+                dizi = sonuc.toString().split('');
+                secondDizi = [];
+                deger1.value = "";
+                deger2.value = sonuc;
+                updateIndicator();
+
+            }else if(islem == "bol"){
+                sonuc = n1 / n2;
+                dizi = sonuc.toString().split('');
+                secondDizi = [];
+                deger1.value = "";
+                deger2.value = sonuc;
+                updateIndicator();
+
+            }else if(islem == "toplama"){
+                sonuc = n1 + n2;
+                dizi = sonuc.toString().split('');
+                secondDizi = [];
+                deger1.value = "";
+                deger2.value = sonuc;
+                updateIndicator();
+
+            }else if(islem =="cikarma"){
+                sonuc = n1 - n2;
+                dizi = sonuc.toString().split('');
+                secondDizi = [];
+                deger1.value = "";
+                deger2.value = sonuc;
+                updateIndicator();
+
+            }
+        }
+    }
+
+    function temizle(){
+        secondDizi = [];
+        dizi = [];
+        deger1.value = "";
+        deger2.value = "";
+        islem = "";
+        sonuc = 0;
+        updateIndicator();
+    }
+
+
+    function animasyonlaTasi(){
+        let moveItem = document.getElementById("gizli");       
+        moveItem.style.width = "8rem";
+        moveItem.style.height = "1.25rem";
+        moveItem.style.fontSize = "1rem";
+        moveItem.style.left="0.75rem";
+        moveItem.style.top="4.65rem";
+
+        moveItem.innerText = deger2.value;
+        deger2.value = "";
+        deger2.setAttribute("placeholder","");
+        secondDizi = moveItem.innerText.split('');
+        dizi = [];
+
+        setTimeout(()=>{
+            deger1.value=moveItem.innerText; 
+            
+            moveItem.innerText = "";
+            moveItem.style.width = "17.25rem";
+            moveItem.style.height = "1.95rem";
+            moveItem.style.fontSize = "1.4rem";
+            moveItem.style.left="0.75rem";
+            moveItem.style.top="6.35rem";
+
+        }, 700);
+        
+    }
+
+
+
+    
+    
+
+</script>
+</body>
+</html>
