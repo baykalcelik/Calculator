@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfa 3</title>
+</head>
+<body>
+    
+<button id="buton1" onclick="reset()">Buton 1</button>
+<div id="giris-sayisi"></div>
+
+    <script>
+        // daha önce bu sayfaya kaç kez girildi Bu bilgiyi giriş sayısı kutusuna göster.
+        if(localStorage.getItem("counter") === null ){
+            localStorage.setItem('counter',"1");
+            document.querySelector('#giris-sayisi').innerHTML = "ilk kez girildi";
+        }else{
+            let deger = Number(localStorage.getItem("counter"));
+            deger++;
+            document.querySelector('#giris-sayisi').innerHTML = deger;
+            localStorage.setItem('counter', deger);
+        }
+
+
+            
+            document.querySelector("#buton1").addEventListener('click',()=>{
+                localStorage.setItem("counter","0");
+                document.querySelector('#giris-sayisi').innerHTML = 0;
+            })
+            
+
+
+    </script>
+</body>
+</html>

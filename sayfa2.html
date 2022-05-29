@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfa 2</title>
+</head>
+<body>
+    
+    <div id="kutu1"></div>
+
+    <script>
+
+        // let ad = prompt("Adınız");
+        // document.querySelector("#kutu1").innerHTML = ad;
+
+        let lsAd = localStorage.getItem("ad");
+        let lsPremiumKarari = localStorage.getItem("premiumKarari");
+
+
+
+        if(lsAd === null){
+            let ad = prompt("Adınız: ");
+            document.querySelector('#kutu1').innerHTML = ad;
+            localStorage.setItem('ad', ad);
+        }
+
+        if(lsPremiumKarari === null){
+            let premiumTeklifYaniti= confirm("Premium üye olmak istermisiniz ? Digiturk avatajları için üye olmalısınız");
+            localStorage.setItem('premiumKarari', premiumTeklifYaniti);
+            if(premiumTeklifYaniti === true){
+            location.href = "https://www.puhu.tv";
+        }
+        }
+
+        // debugger;
+
+
+
+        
+
+        
+
+    </script>
+</body>
+</html>
